@@ -61,7 +61,7 @@ Object.defineProperty(pine, 'configure', {
             options.basedir = root ? path.dirname(root): parent;
         }
 
-        SETTINGS = Object.freeze(_.defaults(options, DEFAULTS));
+        SETTINGS = common.deepFreeze(_.defaults(options, DEFAULTS));
         DEFAULT_LOGGER = common.createWinstonLogger(SETTINGS);
     },
     enumerable: true,
