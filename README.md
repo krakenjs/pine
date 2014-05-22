@@ -5,6 +5,8 @@ A simple logging wrapper for Winston.
 
 ## Usage
 ```javascript
+var pine = require('pine');
+
 var log = pine();
 log.info('Hello, world!');
 log.error('This Department Has Worked %d Days Without Injury', 0);
@@ -37,8 +39,33 @@ log.error('Iceberg!');
 ```
 
 
-`pine.configure(options);` - Set global logging settings, using built-in settings as defaults.
-- `options` (*Object*)
+`pine.configure(options);`
+- `options` (*Object*) - The default options which will be used for all loggers.
+Set global logging settings, using built-in settings as defaults.
+
+```javascript
+var options = {
+
+    // The root directory against which relative paths are calculated. Defaults to root of calling module.
+    basedir: __dirname,
+
+    // The winston levels to use. Defaults to `npm` levels.
+    levels: undefined,
+
+    The colors to use. Defaults to `npm` colors.
+    colors: undefined,
+
+    // The transports to use, mapping the transport name to settings.
+    transports: {
+        console: {
+            level: 'debug'
+        }
+    },
+
+    // Transports to be used for logging exceptions. An object mapping the transport name to settings.
+    exceptionHandlers: undefined
+}
+```
 
 
 `pine.settings` - read-only property of current global default settings.

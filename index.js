@@ -25,7 +25,9 @@ DEFAULTS = SETTINGS = {
         }
     },
 
-    exceptions: {}
+    exceptionHandlers: {},
+
+    exitOnError: false
 
 };
 
