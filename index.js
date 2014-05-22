@@ -37,7 +37,7 @@ function createInstance(settings) {
 
         ctor = name[0].toUpperCase() + name.slice(1);
         options = settings.transports[name];
-        options.timestamp = common.formatDate;
+        options.timestamp = options.timestamp || common.formatDate;
 
         return new winston.transports[ctor](options);
     }
