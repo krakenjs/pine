@@ -41,6 +41,7 @@ log.error('Iceberg!');
 
 #### `pine.configure(options);`
 - `options` (*Object*) - The default options which will be used for all loggers.
+
 Set global logging settings, using built-in settings as defaults.
 
 ```javascript
