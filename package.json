@@ -1,0 +1,28 @@
+{
+  "name": "pine",
+  "version": "0.0.0",
+  "description": "A logging utility.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "keywords": [
+    "logging",
+    "cal"
+  ],
+  "author": "Erik Toth <ertoth@paypal.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^2.13.1",
+    "istanbul": "^0.2.10",
+    "jshint": "^2.5.1"
+  },
+  "dependencies": {
+    "caller": "0.0.1",
+    "winston": "^0.7.3",
+    "lodash-node": "^2.4.1"
+  }
+}
