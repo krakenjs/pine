@@ -44,7 +44,7 @@ log.error('Iceberg!');
 Set global logging settings, using built-in settings as defaults.
 
 ```javascript
-var options = {
+pine.configure({
 
     // The root directory against which relative paths are calculated. Defaults to root of calling module.
     basedir: __dirname,
@@ -64,7 +64,7 @@ var options = {
 
     // Transports to be used for logging exceptions. An object mapping the transport name to settings.
     exceptionHandlers: undefined
-}
+});
 ```
 
 
