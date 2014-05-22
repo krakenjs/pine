@@ -6,7 +6,7 @@ A simple logging wrapper.
 ## Usage
 ```javascript
 
-var log = pine();
+var log = pine(); //
 log.info('Hello, world!');
 log.error('This Department Has Worked %d Days Without Injury', 0);
 ```

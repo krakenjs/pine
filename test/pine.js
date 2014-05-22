@@ -1,33 +1,83 @@
 'use strict';
 
 var test = require('tape');
-var pine = require('../');
+var freshy = require('freshy');
+
 
 test('pine', function (t) {
+    var pine, log;
 
-    pine.configure({
+    t.test('defaults', function (t) {
+        pine = freshy.freshy('../');
 
-        dirname: __dirname,
+        // Derived name
+        log = pine();
+        t.ok(log);
+        t.equal(log.name, 'test/pine.js');
+        t.equal(typeof log.log, 'function');
+        t.equal(typeof log.silly, 'function');
+        t.equal(typeof log.debug, 'function');
+        t.equal(typeof log.verbose, 'function');
+        t.equal(typeof log.info, 'function');
+        t.equal(typeof log.warn, 'function');
+        t.equal(typeof log.error, 'function');
+        log.info('Hello, world!');
 
-        transports: {
-            console: {
-                level: 'debug',
-                colorize: true
-            }
-        },
+        // Explicit arbitrary name
+        log = pine('myLogger');
+        t.ok(log);
+        t.equal(log.name, 'myLogger');
+        t.equal(typeof log.log, 'function');
+        t.equal(typeof log.silly, 'function');
+        t.equal(typeof log.debug, 'function');
+        t.equal(typeof log.verbose, 'function');
+        t.equal(typeof log.info, 'function');
+        t.equal(typeof log.warn, 'function');
+        t.equal(typeof log.error, 'function');
+        log.info('Hello, world!');
 
-        exceptionHandlers: {
-            console: {
-                colorize: true
-            }
-        }
+        // Explicit file
+        log = pine(__filename);
+        t.ok(log);
+        t.equal(log.name, 'test/pine.js');
+        t.equal(typeof log.log, 'function');
+        t.equal(typeof log.silly, 'function');
+        t.equal(typeof log.debug, 'function');
+        t.equal(typeof log.verbose, 'function');
+        t.equal(typeof log.info, 'function');
+        t.equal(typeof log.warn, 'function');
+        t.equal(typeof log.error, 'function');
+        log.info('Hello, world!');
 
+        t.end();
     });
 
 
 
-    t.test('configureEnvironment', function (t) {
+    t.test('configure', function (t) {
         var logger;
+
+        pine = freshy.freshy('../');
+        pine.configure({
+
+            basedir: __dirname,
+
+            transports: {
+                console: {
+                    level: 'debug',
+                    colorize: true
+                }
+            },
+
+            exceptionHandlers: {
+                console: {
+                    colorize: true
+                }
+            }
+
+        });
+
+
 
         logger = pine();
         t.ok(logger);

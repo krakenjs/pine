@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "tape test/*.js",
+    "cover": "istanbul cover tape -- test/*.js",
+    "lint": "jshint -c .jshintrc index.js lib/*.js"
   },
   "keywords": [
     "logging",
@@ -18,7 +20,8 @@
   "devDependencies": {
     "tape": "^2.13.1",
     "istanbul": "^0.2.10",
-    "jshint": "^2.5.1"
+    "jshint": "^2.5.1",
+    "freshy": "0.0.2"
   },
   "dependencies": {
     "caller": "0.0.1",

@@ -12,7 +12,7 @@ var DEFAULT_LOGGER, DEFAULTS, SETTINGS;
 
 DEFAULTS = SETTINGS = {
 
-    basedir: process.cwd(),
+    basedir: null,
 
     levels: winston.config.npm.levels,
 
@@ -30,14 +30,14 @@ DEFAULTS = SETTINGS = {
 };
 
 
-function createInstance(settings) {
+function createWinstonLogger(settings) {
 
-    function createTransport(name) {
+    function createTransport(type) {
         var ctor, options;
 
-        ctor = name[0].toUpperCase() + name.slice(1);
-        options = settings.transports[name];
-        options.timestamp = options.timestamp || common.formatDate;
+        ctor = type[0].toUpperCase() + type.slice(1);
+        options = settings.transports[type];
+        options.timestamp = typeof options.timestamp === 'function' ? options.timestamp : common.formatDate;
 
         return new winston.transports[ctor](options);
     }
@@ -58,22 +58,31 @@ function pine(name, options) {
         name = undefined;
     }
 
+    if (!DEFAULT_LOGGER) {
+        pine.configure(DEFAULTS);
+    }
+
     name = name || caller();
     name = (name === path.resolve(name)) ? path.relative(SETTINGS.basedir, name) : name;
     options = options && _.defaults(options, SETTINGS.transports);
 
     // Custom options result in a new logger, otherwise reuse default.
-    return logger(name, options ? createInstance(name, options) : DEFAULT_LOGGER);
+    return logger(name, options ? createWinstonLogger(options) : DEFAULT_LOGGER);
 }
 
 
 Object.defineProperty(pine, 'configure', {
     value: function configure(options) {
-        options.basedir = options.basedir ? path.resolve(options.basedir) : path.dirname(caller());
-        options = _.defaults(options, DEFAULTS);
+        var parent, root;
 
-        SETTINGS = Object.freeze(options);
-        DEFAULT_LOGGER = createInstance(SETTINGS);
+        if (!options.basedir) {
+            parent = path.dirname(caller());
+            root = common.findFile('package.json', parent);
+            options.basedir = root ? path.dirname(root): parent;
+        }
+
+        SETTINGS = Object.freeze(_.defaults(options, DEFAULTS));
+        DEFAULT_LOGGER = createWinstonLogger(SETTINGS);
     },
     enumerable: true,
     writable: false
