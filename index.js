@@ -33,12 +33,17 @@ DEFAULTS = SETTINGS = {
 
 
 function pine(name, options) {
+    var parent, root;
+
     if (typeof name === 'object') {
         options = name;
         name = undefined;
     }
 
     if (!DEFAULT_LOGGER) {
+        parent = path.dirname(caller());
+        root = common.findFile('package.json', parent);
+        DEFAULTS.basedir = root ? path.dirname(root): parent;
         pine.configure(DEFAULTS);
     }
 
