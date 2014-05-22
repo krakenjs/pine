@@ -52,7 +52,7 @@ var options = {
     // The winston levels to use. Defaults to `npm` levels.
     levels: undefined,
 
-    The colors to use. Defaults to `npm` colors.
+    // The colors to use. Defaults to `npm` colors.
     colors: undefined,
 
     // The transports to use, mapping the transport name to settings.
