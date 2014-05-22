@@ -19,7 +19,7 @@ log.error('This Department Has Worked %d Days Without Injury', 0);
 
 
 ### API
-`pine([name] [,options])`
+#### `pine([name] [,options])`
 - `name` (optional, *String*) - If not provided, defaults to file path relative to parent package.
 - `options` (optional, *Object*) - Same options as `pine.configure`. When provided will create logger with provided
 settings, using configured global settings as defaults.
@@ -39,7 +39,7 @@ log.error('Iceberg!');
 ```
 
 
-`pine.configure(options);`
+#### `pine.configure(options);`
 - `options` (*Object*) - The default options which will be used for all loggers.
 Set global logging settings, using built-in settings as defaults.
 
@@ -68,4 +68,5 @@ pine.configure({
 ```
 
 
-`pine.settings` - read-only property of current global default settings.
+#### `pine.settings`
+Read-only property of current global default settings.
