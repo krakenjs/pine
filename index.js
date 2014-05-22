@@ -21,8 +21,7 @@ DEFAULTS = SETTINGS = {
 
     transports: {
         console: {
-            level: 'debug',
-            timestamp: common.formatDate
+            level: 'debug'
         }
     },
 
@@ -43,7 +42,7 @@ function pine(name, options) {
 
     name = name || caller();
     name = (name === path.resolve(name)) ? path.relative(SETTINGS.basedir, name) : name;
-    options = options && _.defaults(options, SETTINGS.transports);
+    options = options && _.defaults(options, SETTINGS);
 
     // Custom options result in a new logger, otherwise reuse default.
     return logger(name, options ? common.createWinstonLogger(options) : DEFAULT_LOGGER);
