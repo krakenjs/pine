@@ -16,7 +16,12 @@
     "cal"
   ],
   "author": "Erik Toth <ertoth@paypal.com>",
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
   "devDependencies": {
     "tape": "^2.13.1",
     "istanbul": "^0.2.10",
