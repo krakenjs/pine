@@ -12,8 +12,7 @@
     "lint": "jshint -c .jshintrc index.js lib/*.js"
   },
   "keywords": [
-    "logging",
-    "cal"
+    "logging"
   ],
   "author": "Erik Toth <ertoth@paypal.com>",
   "licenses": [

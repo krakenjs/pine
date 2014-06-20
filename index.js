@@ -42,7 +42,7 @@ DEFAULTS = SETTINGS = {
         }
     },
 
-    exceptionHandlers: {},
+    exceptionHandlers: null,
 
     exitOnError: false
 
