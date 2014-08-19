@@ -14,6 +14,10 @@
   "keywords": [
     "logging"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:krakenjs/pine.git"
+  },
   "author": "Erik Toth <ertoth@paypal.com>",
   "licenses": [
     {
