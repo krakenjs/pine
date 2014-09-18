@@ -185,7 +185,7 @@ test('pine', function (t) {
         setTimeout(function () {
 
             mongo = log._impl.transports.mongodb;
-            mongo.query({}, function (err, data) {
+            mongo.query(function (err, data) {
                 var message;
 
                 t.error(err);
