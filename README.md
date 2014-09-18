@@ -40,10 +40,7 @@ log.error('Iceberg!');
 
 
 #### `pine.configure(options);`
-- `options` (*Object*) - The default options which will be used for all loggers.
-
-- `options` - An optional configuration object. To omit this argument but still
-  use a callback, pass `null` in this position. The options object supports the
+- `options` - The default options which will be used for all loggers. The options object supports the
   following optional keys:
     - `basedir` - The root directory against which relative paths are calculated. Defaults to root of calling module.
     - `levels` - The winston levels to use. Defaults to `npm` levels.
