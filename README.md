@@ -42,28 +42,50 @@ log.error('Iceberg!');
 #### `pine.configure(options);`
 - `options` (*Object*) - The default options which will be used for all loggers.
 
+- `options` - An optional configuration object. To omit this argument but still
+  use a callback, pass `null` in this position. The options object supports the
+  following optional keys:
+    - `basedir` - The root directory against which relative paths are calculated. Defaults to root of calling module.
+    - `levels` - The winston levels to use. Defaults to `npm` levels.
+    - `colors` - The colors to use. Defaults to `npm` colors.
+      whether the client should reject a response from a server with invalid certificates.  This cannot be set at the
+      same time as the `agent` option is set.
+    - `transports` - The transports to use, mapping the transport name to settings. To use external or custom transports see
+      the `modules` config options.
+    - `modules` - Describe, for registration, the modules which implement the required custom transport.
+    - `exceptionHandlers` - Transports to be used for logging exceptions. An object mapping the transport name to settings.
+
+
 Set global logging settings, using built-in settings as defaults.
 
 ```javascript
 pine.configure({
 
-    // The root directory against which relative paths are calculated. Defaults to root of calling module.
     basedir: __dirname,
 
-    // The winston levels to use. Defaults to `npm` levels.
     levels: undefined,
 
-    // The colors to use. Defaults to `npm` colors.
     colors: undefined,
 
-    // The transports to use, mapping the transport name to settings.
     transports: {
         console: {
             level: 'debug'
+        },
+        mongodb: {
+            level: 'info',
+            db: 'logs',
+            host: '127.0.0.1',
+            port: '27017'
         }
     },
 
-    // Transports to be used for logging exceptions. An object mapping the transport name to settings.
+    modules: {
+        mongodb: {
+            name: 'winston-mongodb',
+            property: 'MongoDB'
+        }
+    },
+
     exceptionHandlers: undefined
 });
 ```

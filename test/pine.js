@@ -172,7 +172,7 @@ test('pine', function (t) {
                     silent: false,
                     db: 'logs',
                     collection: '',
-                    safe: false,
+                    safe: true,
                     host: '127.0.0.1',
                     port: '27017'
                 }
