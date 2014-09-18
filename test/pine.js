@@ -170,7 +170,7 @@ test('pine', function (t) {
                 mongodb: {
                     level: 'info',
                     silent: false,
-                    db: 'logs',
+                    db: 'logs2',
                     collection: '',
                     safe: true,
                     host: '127.0.0.1',
