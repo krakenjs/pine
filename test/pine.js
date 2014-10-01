@@ -153,5 +153,56 @@ test('pine', function (t) {
     });
 
 
+    t.test('external transport', function (t) {
+        var log, mongo;
+
+        pine = freshy.freshy('../');
+        pine.configure({
+            modules: {
+                mongodb: {
+                    name: 'winston-mongodb',
+                    property: 'MongoDB'/*,
+                     method: '',
+                     arguments: []*/
+                }
+            },
+            transports: {
+                mongodb: {
+                    level: 'info',
+                    silent: false,
+                    db: 'logs2',
+                    collection: '',
+                    safe: true,
+                    host: '127.0.0.1',
+                    port: '27017'
+                }
+            }
+        });
+
+        log = pine();
+        log.log('info', 'test 123');
+
+        setTimeout(function () {
+
+            mongo = log._impl.transports.mongodb;
+            mongo.query(function (err, data) {
+                var message;
+
+                t.error(err);
+                t.ok(Array.isArray(data));
+                t.ok(data.length >= 1);
+
+                message = data[0];
+                t.equal(message.level, 'info');
+                t.ok(message.message.match(/test 123/));
+
+                mongo.client.close(function (err) {
+                    t.error(err);
+                    t.end();
+                });
+            });
+
+        }, 2500);
+    });
 
 });
