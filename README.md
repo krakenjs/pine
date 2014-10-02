@@ -1,4 +1,6 @@
-# pine
+pine
+====
+[![Build Status](https://travis-ci.org/krakenjs/pine.svg?branch=master)](https://travis-ci.org/krakenjs/pine)
 
 A simple logging wrapper for Winston.
 
