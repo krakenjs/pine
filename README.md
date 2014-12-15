@@ -1,6 +1,9 @@
 pine
 ====
-[![Build Status](https://travis-ci.org/krakenjs/pine.svg?branch=master)](https://travis-ci.org/krakenjs/pine)
+
+Lead Maintainer: [Jean-Charles Sisk](https://github.com/jasisk)  
+
+[![Build Status](https://travis-ci.org/krakenjs/pine.svg?branch=master)](https://travis-ci.org/krakenjs/pine)  
 
 A simple logging wrapper for Winston.
 
