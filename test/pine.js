@@ -170,11 +170,9 @@ test('pine', function (t) {
                 mongodb: {
                     level: 'info',
                     silent: false,
-                    db: 'logs2',
-                    collection: '',
-                    safe: true,
-                    host: '127.0.0.1',
-                    port: '27017'
+                    db: 'mongodb://127.0.0.1:27017',
+                    collection: 'logs2',
+                    safe: true
                 }
             }
         });
@@ -196,7 +194,7 @@ test('pine', function (t) {
                 t.equal(message.level, 'info');
                 t.ok(message.message.match(/test 123/));
 
-                mongo.client.close(function (err) {
+                mongo.logDb.close(function (err) {
                     t.error(err);
                     t.end();
                 });
