@@ -1,7 +1,4 @@
-pine
-====
-
-Lead Maintainer: [Jean-Charles Sisk](https://github.com/jasisk)  
+# pine
 
 [![Build Status](https://travis-ci.org/krakenjs/pine.svg?branch=master)](https://travis-ci.org/krakenjs/pine)  
 
